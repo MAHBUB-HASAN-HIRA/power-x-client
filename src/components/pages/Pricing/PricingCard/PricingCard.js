@@ -1,9 +1,19 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../../../App";
 
-const PricingCard = ({plan}) => {
+const PricingCard = ({ plan }) => {
+	const { setCart } = useContext(UserContext);
+	const handleCart = (plan) => {
+		const cartProduct = {
+			name: plan.name,
+			price: plan.price,
+		};
+		setCart(cartProduct);
+		sessionStorage.setItem("cart", JSON.stringify(cartProduct));
+	};
 	return (
 		<div className="pt-3 pb-3">
 			<div
@@ -53,7 +63,11 @@ const PricingCard = ({plan}) => {
 					</div>
 				</div>
 				<div className="mt-3 mb-2">
-					<Link className="purchase_btn" to="/#">
+					<Link
+						onClick={() => handleCart(plan)}
+						className="purchase_btn"
+						to="/checkout/register"
+					>
 						<button>Purchase</button>
 					</Link>
 				</div>

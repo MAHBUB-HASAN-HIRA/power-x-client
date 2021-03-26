@@ -1,5 +1,6 @@
 import React from "react";
 import gymImage from "../../../../resource/FakeData/gymImage.json";
+import "./OurGym.css";
 
 const OurGym = () => {
 	return (
@@ -13,9 +14,15 @@ const OurGym = () => {
 					<div className="mt-3">
 						<div className="row">
 							{gymImage.map((image) => (
-								<div className="col-lg-4 col-md-6 col-sm-12" key={image.id}>
-									<div className="mb-3 p-2" key={image.id}>
-										<img className="img-fluid" src={image.image_link} alt="" />
+								<div
+									className="col-lg-4 col-md-6 col-sm-12 div_contain"
+									key={image.id}
+								>
+									<div className="img_container mb-3">
+										<img className="image" src={image.image_link} alt="" />
+										<div className="img_overlay">
+											<div className="overlay_text">{image.id}</div>
+										</div>
 									</div>
 								</div>
 							))}

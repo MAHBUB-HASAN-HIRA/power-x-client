@@ -5,7 +5,6 @@ import api_key from "../../../../secretAPI";
 const ContactForm = () => {
 	const onSubmit = (e) => {
 		e.preventDefault();
-		console.log(e.target);
 		emailjs
 			.sendForm(
 				api_key.YOUR_SERVICE_ID,
@@ -21,7 +20,9 @@ const ContactForm = () => {
 					}
 				},
 				(error) => {
-					console.log(error.text);
+					if (error) {
+						alert("OPPS!!! There are some problem. Please Try Again.");
+					}
 				}
 			);
 	};
@@ -29,7 +30,10 @@ const ContactForm = () => {
 	return (
 		<div className="col-lg-6 col-md-10 ms-auto me-auto">
 			<div className="form_container">
-				<h2 className="text-center mb-3">Get In Touch</h2>
+				<h1 className="font_bebas_about fs-1">Don't Worry</h1>
+				<h2 className="text-center fs-1 mb-3 font_bebas_about">
+					We are Ready to <span className="about_yellow">hear you</span>
+				</h2>
 				<form onSubmit={onSubmit}>
 					<div className="form-group">
 						<input
