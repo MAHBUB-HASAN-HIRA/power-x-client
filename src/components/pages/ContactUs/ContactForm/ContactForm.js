@@ -1,16 +1,15 @@
 import emailjs from "emailjs-com";
 import React from "react";
-import api_key from "../../../../secretAPI";
 
 const ContactForm = () => {
 	const onSubmit = (e) => {
 		e.preventDefault();
 		emailjs
 			.sendForm(
-				api_key.YOUR_SERVICE_ID,
-				api_key.YOUR_TEMPLATE_ID,
+				process.env.REACT_APP_SERVICE_ID,
+				process.env.REACT_APP_TEMPLATE_ID,
 				e.target,
-				api_key.YOUR_USER_ID
+				process.env.REACT_APP_USER_ID
 			)
 			.then(
 				(result) => {

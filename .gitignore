@@ -11,9 +11,8 @@
 # production
 /build
 
-#Secreat Api key
-/src/secretAPI.js
-/src/secretAPI2.js
+#env
+.env
 
 # misc
 .DS_Store

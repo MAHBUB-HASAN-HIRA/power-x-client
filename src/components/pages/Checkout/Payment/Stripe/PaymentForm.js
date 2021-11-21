@@ -1,10 +1,9 @@
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import React from "react";
-import PAYMENT_API from "../../../../../secretAPI2";
 import CreditCardForm from "./CreditCardForm";
 
-const stripePromise = loadStripe(PAYMENT_API);
+const stripePromise = loadStripe(process.env.REACT_APP_PAYMENT_API);
 
 const PaymentForm = () => {
 	return (
